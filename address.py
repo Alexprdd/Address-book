@@ -1,16 +1,45 @@
 import tkinter as tk
 from tkinter import messagebox
 
-#address dictionary
-AddressDictionary={
-    
+                                                                        #FUNCTIONALITY
+
+AddressDictionary = {
+    "Predica": {},
+    "Petrescu": {},
+    "Georgescu": {}
 }
+#adding to listbox/update function
 
-#functions
+def update():
+    
+    firstname=firstnameentry.get()
+    listbox.insert(tk.END, firstname)
+    firstnameentry.delete(0, tk.END)
+    
+    address=addressentry.get()
+    listbox.insert(tk.END, address)
+    addressentry.delete(0, tk.END)
 
-def addtodictionary():
-    globaldictionary=
+    mobile=mobileentry.get()
+    listbox.insert(tk.END, mobile)
+    mobileentry.delete(0, tk.END)
 
+    email=emailentry.get()
+    listbox.insert(tk.END, email)
+    emailentry.delete(0, tk.END)
+
+    birthday=birthdayentry.get()
+    listbox.insert(tk.END, birthday)
+    birthdayentry.delete(0, tk.END)
+
+    AddressDictionary[firstname] = {
+        "Address": address,
+        "Mobile": mobile,
+        "Email": email,
+        "Birthday": birthday
+    }
+
+                                                                            #DESIGN
 
 #window
 
@@ -20,6 +49,7 @@ window.geometry("700x700")
 
 addressbooklabel=tk.Label(window, text="My Address Book: ", font=("Arial", 12), bg="lightgrey")
 addressbooklabel.place(x=180,y=0)
+
 #listbox
 
 listbox=tk.Listbox(window, width=50, height=25)
@@ -39,11 +69,11 @@ delete.place(x=200, y=475)
 edit=tk.Button(window, text="Edit", bd=2, width=15, bg="lightgrey")
 edit.place(x=10, y=475)
 
-Update=tk.Button(window, text="Update/Add", bd=2, width=15, bg="lightgrey")
+Update=tk.Button(window, text="Update/Add", bd=2, width=15, bg="lightgrey", command=update)
 Update.place(x=500, y=375)
 
-
 #secondary labels
+
 firstnamelabel=tk.Label(window, text="First name:", font=("Arial", 10), bg="lightgrey")
 firstnamelabel.place(x=400, y=75)
 
@@ -75,5 +105,6 @@ emailentry.place(x=500,y=225)
 
 birthdayentry=tk.Entry(window, width=20, bd=2)
 birthdayentry.place(x=500,y=275)
+ 
 
 window.mainloop()
